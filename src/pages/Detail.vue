@@ -71,9 +71,9 @@
               <img class="imgnull" mode="scaleToFill" src="../assets/icon/null.png">
               <p class="textnull">暂无收录评论 </p>
             </div>
-
         </div>
       </div>
+
 
     </div>
 
