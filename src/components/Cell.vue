@@ -1,4 +1,5 @@
 <template>
+<!-- 在这个文件里更改一些东西 -->
   <a class="mint-cell" :href="href">
     <span class="mint-cell-mask" v-if="isLink"></span>
     <!-- <div class="mint-cell-left">
