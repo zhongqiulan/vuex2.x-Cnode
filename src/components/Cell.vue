@@ -1,9 +1,9 @@
 <template>
   <a class="mint-cell" :href="href">
     <span class="mint-cell-mask" v-if="isLink"></span>
-    <div class="mint-cell-left">
+    <!-- <div class="mint-cell-left">
       <slot name="left"></slot>
-    </div>
+    </div> -->
     <div class="mint-cell-wrapper">
       <div class="mint-cell-title">
         <slot name="icon">
@@ -11,6 +11,7 @@
         </slot>
         <slot name="title">
           <span class="mint-cell-text" v-text="title"></span>
+          
           <span v-if="label" class="mint-cell-label" v-text="label"></span>
         </slot>
       </div>
@@ -20,9 +21,9 @@
         </slot>
       </div>
     </div>
-    <div class="mint-cell-right">
+    <!-- <div class="mint-cell-right">
       <slot name="right"></slot>
-    </div>
+    </div> -->
     <i v-if="isLink" class="mint-cell-allow-right"></i>
   </a>
 </template>

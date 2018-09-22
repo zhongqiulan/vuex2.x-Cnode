@@ -14,7 +14,6 @@ import User from '../pages/User'
 import Login from '../pages/Login'
 import NotFound from '../pages/NotFound'
 
-
 /**
  * 路由懒加载 https://router.vuejs.org/zh-cn/advanced/lazy-loading.html
  * 结合 Vue 的 异步组件 和 Webpack 的 code splitting feature, 轻松实现路由组件的懒加载。
@@ -49,7 +48,7 @@ const routes = [{
         path: '/me',
         name: 'me',
         component: Me,
-        meta: { auth: true }
+        // meta: { auth: true }
     },
     {
         path: '/about',
@@ -65,7 +64,7 @@ const routes = [{
         path: '/message',
         name: 'message',
         component: Message,
-        meta: { auth: true }
+        // meta: { auth: true }
     },
     {
         path: '/user/:loginname',

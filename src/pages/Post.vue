@@ -19,114 +19,129 @@
         </div>
 
         <button class="submit" @click="submit()">发布</button>
+        <button @click="test()">发布</button>
     </div>
 </template>
 
 <script>
-    import { mapState } from 'vuex'
-    import api from '../fetch/api'
-    import tool from '../util/tool'
-    export default {
-        data() {
-            return {
-                form: {
-                    topic_id: '', //主题id
-                    accesstoken: '', // 用户的 accessToken
-                    title: '', //标题
-                    tab: '', //发表的板块
-                    content: '', //发表的内容
-                }
-            }
-        },
-        computed: mapState({ accesstoken: state => state.user.userInfo.accesstoken }),
-        methods: {
-            submit() {
-                if (!this.accesstoken) return this.$router.push({ path: '/login' })
-                this.form.accesstoken = this.accesstoken
+import { mapState } from "vuex";
+import api from "../fetch/api";
+import tool from "../util/tool";
+export default {
+  data() {
+    return {
+      form: {
+        topic_id: "", //主题id
+        accesstoken: "", // 用户的 accessToken
+        title: "", //标题
+        tab: "", //发表的板块
+        content: "" //发表的内容
+      }
+    };
+  },
+  computed: mapState({ accesstoken: state => state.user.userInfo.accesstoken }),
+  methods: {
+    //   孺子可教也
+    test() {
+      console.log(this.$store.state.user);
+    },
+    submit() {
+      if (!this.accesstoken) return this.$router.push({ path: "/login" });
+      this.form.accesstoken = this.accesstoken;
 
-                if (!this.form.title) {
-                    return tool.toast('标题不能为空')
-                } else if (!this.form.tab) {
-                    return tool.toast('选项不能为空')
-                } else if (!this.form.content) {
-                    return tool.toast('内容不能为空')
-                }
-                let params = `topic_id=""&accesstoken=${this.form.accesstoken}&title=${this.form.title}&tab=${this.form.tab}&content=${this.form.content}`
-                api.Post(`accesstoken=${this.form.accesstoken}&title=${this.form.title}&tab=${this.form.tab}&content=${this.form.content}topic_id=''`)
-                    .then(res => {
-                        if (res.success) {
-                            this.$router.push({ path: `/topic/${res.topic_id}` })
-                        } else {
-                            tool.toast(res.error_msg)
-                        }
-                    })
-
-            }
-        }
-
+      if (!this.form.title) {
+        return tool.toast("标题不能为空");
+      } else if (!this.form.tab) {
+        return tool.toast("选项不能为空");
+      } else if (!this.form.content) {
+        return tool.toast("内容不能为空");
+      }
+      let params = `topic_id=""&accesstoken=${this.form.accesstoken}&title=${
+        this.form.title
+      }&tab=${this.form.tab}&content=${this.form.content}`;
+      api
+        .Post(
+          `accesstoken=${this.form.accesstoken}&title=${this.form.title}&tab=${
+            this.form.tab
+          }&content=${this.form.content}topic_id=''`
+        )
+        .then(res => {
+          if (res.success) {
+            this.$router.push({ path: `/topic/${res.topic_id}` });
+          } else {
+            tool.toast(res.error_msg);
+          }
+        });
     }
+  },
+  created(){
+    //   this.test()
+  }
+};
 </script>
 
 <style lang="css" scoped>
-.post{
-	height: 100%;
+.post {
+  height: 100%;
 }
-.iconfont{
-    font-size:18px;
-    color:#80bd01;
-    margin-right:5px;
+.iconfont {
+  font-size: 18px;
+  color: #80bd01;
+  margin-right: 5px;
 }
-.title{
-    margin-top:43px;
-	padding: 10px 10px;
-}
-
-.select{
-	padding: 10px 10px;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+.title {
+  margin-top: 43px;
+  padding: 10px 10px;
 }
 
-.select select{
-	padding: 0;
+.select {
+  padding: 10px 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
-.con{
-	padding: 5px 10px
+.select select {
+  padding: 0;
 }
 
-.con textarea{
-	line-height: 24px
+.con {
+  padding: 5px 10px;
+}
+
+.con textarea {
+  line-height: 24px;
 }
 
 textarea {
-    margin-top:10px;
-    min-height:300px;
-    padding: 10px !important;
+  margin-top: 10px;
+  min-height: 300px;
+  padding: 10px !important;
 }
-input,select,textarea{
-    background: #eee;
-	box-sizing: border-box;
-	width: 100%;
-	height: 32px;
-	padding: 10px;
-	line-height: 28px;
-	border: none;
-	font-size: 14px;
-	resize: none;
-    border-radius: 5px;
-    margin-top:5px;
+input,
+select,
+textarea {
+  background: #eee;
+  box-sizing: border-box;
+  width: 100%;
+  height: 32px;
+  padding: 10px;
+  line-height: 28px;
+  border: none;
+  font-size: 14px;
+  resize: none;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
-.submit{
-    display: block;
-    width:250px;
-    padding:10px 15px;
-    margin:auto;
-    margin-top:20px;
-    text-align:center;
-    background:#80bd01;
-    color:#fff;
-    border-radius: 5px;
+.submit {
+  display: block;
+  width: 250px;
+  padding: 10px 15px;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+  background: #80bd01;
+  color: #fff;
+  border-radius: 5px;
 }
 </style>
