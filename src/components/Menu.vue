@@ -65,7 +65,7 @@
             singOut() {
                 this.$emit("hideMenuSlide")
                 this.setSignOut()
-                this.$router.push({ name: 'home' })
+                this.$router.push({ name: 'home' }) 
             }
         }
     }

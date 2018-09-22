@@ -1,14 +1,13 @@
 <template>
   <div class="topics">
-
-
     <nav class="nav-box clearfix" >
       <ul class="nav-bar">
-        <li v-for="(item, index) in itemTab" :key="index" class="nav-bar-item" :class="{'nav-bar-active':initIndex === index}" v-on:click="changeTab(index)">{{item.title}}</li>
+        <li v-for="(item, index) in itemTab" :key="index" class="nav-bar-item" :class="{'nav-bar-active':initIndex === index}" v-on:click="changeTab(index)">{{item.title}}
+        </li>
       </ul>
     </nav>
 
-    <section class="scroll-posts-list" v-if="topicsList" style="border:1px solid red">
+    <section class="scroll-posts-list" v-if="topicsList">
       <div class="posts-list" v-for="(item,index) in topicsList" :key="index">
         <router-link :to="{name:'detail',params:{id:item.id}}">
           <div class="posts-list-info clearfix">
@@ -164,7 +163,7 @@
   overflow: hidden;
   display: flex;
   margin-top: 15px;
-  // padding-bottom: 10px;
+  /* padding-bottom: 10px; */
   border-bottom: 1px solid #eee;
 }
 .posts-list-info .userimg{
@@ -205,7 +204,7 @@
   width: 36px;
   height:18px;
   text-align: center;
-  // line-height:18px;
+  /* line-height:18px; */
   margin-right: 5px;
   font-size: 12px;
   color: #80bd01;
